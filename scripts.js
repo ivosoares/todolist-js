@@ -44,10 +44,35 @@ function renderTodo(todo) {
     // Tracker a lista onde deve ser incluida os todos.
     const list = document.querySelector('.js-todo-list');
 
+    // cria o elemento li no DOM dentro da UL
     const listItem = document.createElement("li");
 
-    listItem.innerHTML = `<span>${todo.text}</span>`;
+    listItem.setAttribute('class', `todo-item`);
+    listItem.setAttribute('data-key', `${todo.id}`);
+
+    listItem.innerHTML = `
+        <input id="${todo.id}" type="checkbox"/>
+        <label for="${todo.id}" class="tick js-tick"></label>
+        <span>${todo.text}</span>
+        <button class="delete-todo js-delete-todo">
+            <svg><use href="#delete-icon"></use></svg>
+        </button>
+    `;
 
     list.append(listItem);
 
 }
+
+
+// marcar tarefa como concluida
+// selecionar lista de tarefas
+const list = document.querySelector('.js-todo-list');
+
+list.addEventListener('click', event => {
+    console.log(event.target);
+    if(event.target.classList.contains('js-tick')){
+        // buscar o data data customizavel e chamar a funcao que marca a tarefa como concluida.
+    }else {
+        
+    }
+})
